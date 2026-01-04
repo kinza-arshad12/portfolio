@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Portfolio</title>
+    <style>
+        /* Body and background */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1c1c1c;
+            /* soft black background */
+            color: #e0e0e0;
+            /* soft white text */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 40px;
+            font-weight: 700;
+            color: #e57373;
+        }
+
+        p.subtitle {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 18px;
+            color: #cccccc;
+        }
+
+        /* Project cards container */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        /* Each card */
+        .card {
+            background: #2a2a2a;
+            /* soft dark card */
+            width: 260px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 5px solid #e57373;
+            /* soft red top border */
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(255, 87, 87, 0.5);
+            /* soft red glow */
+            background: #3a1c1c;
+            /* light dark red shade */
+            border-top-color: #ff8a80;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #f0f0f0;
+            /* text soft white */
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        /* Video section */
+        .video-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 70px 20px 100px 20px;
+        }
+
+        .portfolio-video {
+            width: 100%;
+            max-width: 650px;
+            height: auto;
+            border-radius: 20px;
+            border: 5px solid #e57373;
+            /* soft red border */
+            box-shadow: 0 10px 25px rgba(255, 87, 87, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .video-caption {
+            font-size: 16px;
+            color: #cccccc;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 85%;
+            }
+
+            .portfolio-video {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to My Portfolio</h1>
+    <p class="subtitle">Click on a project to view it</p>
+
+    <!-- Project cards -->
+    <div class="cards">
+        <div class="card">
+            <a href="webpages/new-year.html" target="_blank">🎉 Happy New Year Page</a>
+        </div>
+        <div class="card">
+            <a href="webpages/travel-form.html" target="_blank">📝 Travel Form Page</a>
+        </div>
+        <div class="card">
+            <a href="webpages/arshadelectronics.html" target="_blank">💻 Arshad Electronics Page</a>
+        </div>
+    </div>
+
+    <!-- Video section -->
+    <div class="video-section">
+        <video class="portfolio-video" controls>
+            <source src="webpages/projectvideo.mp4" type="video/mp4">
+            Your browser does not support video.
+        </video>
+        <div class="video-caption">
+            🎨 Designed in Canva & ✂️ Edited in CapCut
+        </div>
+    </div>
+</body>
+
+</html>
