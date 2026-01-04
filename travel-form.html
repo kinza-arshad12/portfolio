@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/User/Downloads/index1.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Travel Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Button */
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 20px;
+            max-width: 200px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            background: rgb(255, 255, 255);
+            /* default white */
+            color: rgb(5, 47, 149);
+            /* text blue */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            font-style: italic;
+            justify-content: center;
+
+
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            width: 240%;
+            height: 200%;
+            background: rgba(5, 47, 149, 0.3);
+            /* shiny blue reflection */
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .btn:hover::before {
+            top: -70%;
+            left: -70%;
+            background: rgba(5, 47, 149, 0.4);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, rgb(2, 33, 107), rgb(245, 245, 245));
+            /* blue shiny hover */
+            color: white;
+            /* text becomes white on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(8, 31, 115, 0.719);
+        }
+
+
+        /* Background */
+        .bg {
+            position: fixed;
+            /* page ke background ke liye fix */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* poora area fill kare, aspect ratio maintain rahe */
+            z-index: -1;
+            /* content ke peeche rahe */
+            opacity: 0.3;
+            /* thodi transparency */
+            filter: brightness(0.9);
+        }
+
+
+        /* Header */
+        .header {
+            background-color: rgb(5, 47, 149);
+            color: #fff;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            padding: 50px 30px;
+            box-shadow: 0 6px 18px rgba(3, 25, 80, 0.25);
+        }
+
+        /* Header animation */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header {
+            animation: slideDown 0.6s ease-out forwards;
+        }
+
+
+        .logo {
+            height: 60px;
+            position: absolute;
+            left: 15px;
+            top: 10px;
+        }
+
+        .log {
+            height: 50px;
+            position: absolute;
+            left: 95px;
+            top: 15px;
+        }
+
+        .title-box h1 {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .social-icons {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 15px;
+        }
+
+        form {
+            border: 5px solid rgb(5, 47, 149);
+            border-radius: 20px;
+            padding: 30px;
+            background: rgb(5, 47, 149);
+            max-width: 500px;
+            width: 100%;
+            opacity: 0.75;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        input,
+        textarea,
+        select {
+            border: 2px solid rgb(5, 47, 149);
+            font-size: 16px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            width: 100%;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 120px;
+        }
+
+        .social-icons img {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.25s;
+            background: #fff;
+            padding: 4px;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        select {
+            background-color: #ffffff;
+            /* white background */
+            color: #555555;
+            /* light black text, baki inputs jaisy */
+            border: 2px solid rgb(5, 47, 149);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #000080;
+            box-shadow: 0 0 5px rgba(0, 0, 128, 0.5);
+            color: #555555;
+            /* text focus me bhi light black */
+        }
+    </style>
+</head>
+
+<body>
+
+    <img class="bg" src="./Welcome to Travel Form12_files/vu uni pic.jpeg">
+
+    <div class="header">
+        <img src="./Welcome to Travel Form12_files/vu logo.png" class="logo">
+        <img src="./Welcome to Travel Form12_files/gov logo.png" class="log">
+
+        <div class="title-box"><br>
+            <h1>Welcome to VU University Trip Form</h1><br>
+            <p><i>Enter your details and submit this form to confirm your participation in the Trip</i></p>
+        </div>
+
+        <div class="social-icons">
+            <img src="./Welcome to Travel Form12_files/fb logo.png">
+            <img src="./Welcome to Travel Form12_files/twitter logo.png">
+        </div>
+    </div>
+
+    <!-- ✅ FORM START ADDED BACK -->
+    <div class="container">
+        <form id="tripForm">
+
+            <label>Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Age</label>
+            <input type="number" id="age" placeholder="Enter your age">
+
+            <label>Gender</label>
+            <select required="">
+                <option value="" disabled="" selected="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter your Email">
+
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="Enter your phone no">
+
+            <label>Information</label>
+            <textarea id="desc" placeholder="Enter additional details..."></textarea>
+
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("tripForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Form submitted successfully!");
+        });
+    </script>
+
+
+
+</body>
+
+</html>
