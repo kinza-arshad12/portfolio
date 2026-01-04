@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<!-- iOS VIEWPORT FIX -->
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+<title>Happy New Year 2026 – Kinza</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background: #ffffff;
+
+    /* iOS SAFE AREA FIX */
+    padding:
+      env(safe-area-inset-top)
+      env(safe-area-inset-right)
+      env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
+
+    -webkit-overflow-scrolling: touch;
+}
+
+/* sliding background container */
+#backgroundSlide {
+    position: fixed;
+    top:0; left:0;
+    width:0%; height:100%;
+    background: linear-gradient(to right, #000000, #ffb6c1);
+    z-index:0;
+    transition: width 2s ease;
+}
+
+/* BRICK WALL */
+#brickWall {
+    position: fixed; inset:0;
+    background: repeating-linear-gradient(
+        0deg,#8b4513 0px,#8b4513 40px,#a0522d 40px,#a0522d 80px
+    ), repeating-linear-gradient(
+        90deg,#8b4513 0px,#8b4513 40px,#a0522d 40px,#a0522d 80px
+    );
+    z-index:10;
+    transition:opacity .6s ease,transform .6s ease;
+}
+#brickWall.broken {
+    opacity:0;
+    transform: scale(1.1);
+    pointer-events:none;
+}
+
+/* CELEBRATE BUTTON */
+#celebrateBtn {
+    position: fixed; bottom:20px; right:20px;
+    background: #ffb6c1; color:rgb(0, 0, 0); border:none;
+    border-radius:50%; width:60px; height:60px;
+    font-size: 20px; font-weight:bold; cursor:pointer;
+    z-index:20; display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 8px 20px rgb(255, 85, 122);
+    border: 3px solid black;
+}
+#celebrateBtn:active { transform: scale(.9); }
+#celebrateBtn::after {
+    content: '🎉';
+    position:absolute;
+    top:-12px; right:-12px;
+    font-size:18px;
+    animation: bounce 1s infinite;
+}
+@keyframes bounce {
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+}
+
+/* MESSAGE */
+#newYearMessage {
+    position: fixed; top:15%; left:50%;
+    transform:translateX(-50%);
+    text-align:center;
+    background:rgba(0, 0, 0, 0.75);
+    padding:20px 30px;
+    border-radius:12px;
+    z-index:5;
+    display:none;
+    opacity:0.7;
+}
+#newYearMessage h1 {
+    margin:0;
+    font-size:42px;
+    font-weight:800;
+    color:#2b2b2b;
+    text-shadow:
+      0 0 5px #ff9ff3,
+      0 0 10px #feca57,
+      0 0 20px rgba(255,255,255,.8);
+    animation: sparkleGlow 2.5s ease-in-out infinite;
+}
+@keyframes sparkleGlow {
+    0% {text-shadow:0 0 5px #ff9ff3,0 0 10px #feca57;}
+    50% {text-shadow:0 0 10px #ffffff,0 0 25px #ff9ff3,0 0 40px #c8d6e5;}
+    100% {text-shadow:0 0 5px #ff9ff3,0 0 10px #feca57;}
+}
+#newYearMessage p {
+    margin-top:10px;
+    font-size:30px;
+    color:#0e0d0dd7;
+    text-shadow:0 0 5px #ff9ff3,0 0 10px #feca57;
+}
+
+/* MOTIVATION CARDS */
+#motivationCards {
+    position: fixed;
+    top:40%; left:50%;
+    transform: translateX(-50%);
+    display:none;
+    flex-direction:column;
+    gap:22px;
+    z-index:5;
+    width:100%;
+    align-items:center;
+    text-shadow:0 0 5px #e7579ac7,0 0 10px #eb6e8d;
+}
+.card {
+    width:90%;
+    max-width:320px;
+    background:white;
+    color:#333;
+    padding:14px 16px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+    position:relative;
+    box-shadow:
+      0 8px 20px rgb(228, 115, 115),
+      0 0 12px rgba(97, 3, 3, 0.8);
+    animation:swing 5s ease-in-out infinite;
+}
+.card::before {
+    content:"";
+    position:absolute;
+    top:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:3px;
+    height:20px;
+    background:black;
+}
+@keyframes swing {
+    0%,100%{transform:rotate(-1deg);}
+    50%{transform:rotate(1deg);}
+}
+
+/* WISH POPUP */
+#wishPopup {
+    position: fixed;
+    inset:0;
+    background: rgba(0,0,0,.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:50;
+}
+.wishBox {
+    background: linear-gradient(135deg,#ffe6f0,#e6f7ff);
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    max-width:90%;
+    width:320px;
+    color:#333;
+    box-shadow:0 0 30px rgba(255,255,255,.6);
+    animation: popIn .6s ease;
+}
+@keyframes popIn {
+    from {transform:scale(.7); opacity:0;}
+    to {transform:scale(1); opacity:1;}
+}
+.wishBox button {
+    margin-top:15px;
+    background: #ffe6f0;
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+    font-size:1em;
+    cursor:pointer;
+    border: 3px solid #454545
+}
+
+/* SNOW */
+canvas {
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+    #newYearMessage h1{font-size:28px;}
+    #newYearMessage p{font-size:16px;}
+    #celebrateBtn{width:50px;height:50px;font-size:18px;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="backgroundSlide"></div>
+<div id="brickWall"></div>
+
+<button id="celebrateBtn">2026</button>
+
+<div id="newYearMessage">
+    <h1>Happy New Year 2026</h1>
+    <p><b>From Kinza 💖</b></p>
+</div>
+
+<div id="motivationCards">
+    <div class="card">✨ New year, new beginnings</div>
+    <div class="card">💖 Believe in yourself</div>
+    <div class="card">🚀 Dreams don’t expire</div>
+    <div class="card">🌸 Stay kind & strong</div>
+    <div class="card">🌈 You are enough</div>
+</div>
+
+<div id="wishPopup">
+    <div class="wishBox">
+        <h2>💫 Make a Wish for 2026</h2>
+        <p>Close your eyes, make a wish, and believe ✨</p>
+        <button id="closeWish">OK 🌸</button>
+    </div>
+</div>
+
+<canvas id="snow"></canvas>
+
+<script>
+/* iOS animation kickstart */
+document.addEventListener("touchstart",()=>{}, {once:true});
+
+const celebrateBtn=document.getElementById("celebrateBtn");
+const brickWall=document.getElementById("brickWall");
+const newYearMessage=document.getElementById("newYearMessage");
+const motivationCards=document.getElementById("motivationCards");
+const wishPopup=document.getElementById("wishPopup");
+const closeWish=document.getElementById("closeWish");
+const backgroundSlide=document.getElementById("backgroundSlide");
+
+celebrateBtn.onclick=()=>{
+    brickWall.classList.add("broken");
+    backgroundSlide.style.width="100%";
+    newYearMessage.style.display="block";
+    motivationCards.style.display="flex";
+    setTimeout(()=>wishPopup.style.display="flex",2000);
+};
+closeWish.onclick=()=>wishPopup.style.display="none";
+
+/* SNOW DOTS – iOS FIXED */
+const canvas=document.getElementById("snow");
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas(){
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+let dots=[];
+for(let i=0;i<120;i++){
+    dots.push({
+        x:Math.random()*window.innerWidth,
+        y:Math.random()*window.innerHeight,
+        r:Math.random()*4+1,
+        s:Math.random()*1+0.4,
+        c:`hsl(${Math.random()*360},80%,70%)`
+    });
+}
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    dots.forEach(d=>{
+        d.y+=d.s;
+        if(d.y>window.innerHeight)d.y=-10;
+        ctx.fillStyle=d.c;
+        ctx.beginPath();
+        ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+        ctx.fill();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
